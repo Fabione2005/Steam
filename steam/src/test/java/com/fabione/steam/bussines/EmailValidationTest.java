@@ -2,10 +2,10 @@ package com.fabione.steam.bussines;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import com.fabione.steam.exception.PlayerInfoException;
 import com.fabione.steam.service.EmailValidatorServiceImpl;
+import com.fabione.steam.utils.TestUtilsForGroovy;
 
 public class EmailValidationTest {
 
@@ -14,9 +14,9 @@ public class EmailValidationTest {
     @Before
     public void setUp() {
     	emailValidation = new EmailValidatorServiceImpl();
-        ReflectionTestUtils.setField(emailValidation, "regexEmail", "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z][cl])$");
-        ReflectionTestUtils.setField(emailValidation, "emailMsg", "aaaaaaa@dominio.cl");
+        TestUtilsForGroovy.setEmailPropierties(emailValidation);
     }
+
 
     @Test(expected = Test.None.class /* no exception expected */)
     public void shouldReturnTrueWhenValidMail() {
