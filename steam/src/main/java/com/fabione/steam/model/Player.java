@@ -14,10 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
-@Table(name = "gamers")
+@Table(name = "player")
 public class Player {
 	
 	@Id
@@ -40,11 +44,16 @@ public class Player {
 	private LocalDateTime created;
 	
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "library_user_game",
-		joinColumns = { @JoinColumn(name = "user_id")},
+		joinColumns = { @JoinColumn(name = "player_id")},
 		inverseJoinColumns = { @JoinColumn (name = "game_id")})
+	@JsonProperty(access = Access.READ_ONLY)
 	private Set<Game> games = new HashSet<>();
+	
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JsonProperty(access = Access.READ_ONLY)
+	private Wallet wallet;
 
 	public Player() {
 		super();
@@ -129,5 +138,15 @@ public class Player {
 	public void setGames(Set<Game> games) {
 		this.games = games;
 	}
+
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
+	
+	
 	
 }

@@ -1,4 +1,4 @@
-package com.fabione.steam.service;
+package com.fabione.steam.service.business;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

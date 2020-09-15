@@ -15,7 +15,7 @@ public class PlayerInfoException extends GenericException implements CommonExcep
 	
 	public PlayerInfoException() 
 	{
-		super("El correo ya esta registrado", HttpStatus.CONFLICT);
+		super("The email is already registered", HttpStatus.CONFLICT);
 	}
 	
 }

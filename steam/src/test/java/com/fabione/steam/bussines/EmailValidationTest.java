@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.fabione.steam.exception.PlayerInfoException;
-import com.fabione.steam.service.EmailValidatorServiceImpl;
+import com.fabione.steam.service.business.EmailValidatorServiceImpl;
 import com.fabione.steam.utils.TestUtilsForGroovy;
 
 public class EmailValidationTest {

@@ -7,15 +7,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fabione.steam.model.Player;
+import com.fabione.steam.model.generic.BaseResult;
 import com.fabione.steam.model.generic.ResponsePlayerWrapper;
-import com.fabione.steam.service.PlayerService;
+import com.fabione.steam.service.player.PlayerService;
 
 @RestController
-public class SteamController {
+public class PlayerController {
 
 	@Autowired
 	PlayerService service;
@@ -31,13 +33,23 @@ public class SteamController {
 	}
 	
 	@PostMapping(value="player",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> saveUsers(@RequestBody Player player) {		
+	public ResponseEntity<BaseResult> savePlayer(@RequestBody Player player) {		
 		return service.createPlayer(player);
 	}
 	
+	@PutMapping(value="buy/player/{playerId}/game/{gameId}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<BaseResult> buyGameForPlayer(@PathVariable Long playerId,@PathVariable Long gameId) {		
+		return service.buyGameToPlayer(playerId, gameId);
+	}
+	
+	@PutMapping(value="charge/player/{playerId}/money/{moneyAmount}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<BaseResult> chargeMoneyToPlayer(@PathVariable Long playerId,@PathVariable double moneyAmount) {		
+		return service.chargeMoney(playerId, moneyAmount);
+	}
+	
 	@DeleteMapping(value = "/player/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> deleteUser(@PathVariable Long id) {
-		return service.deleteGamer(id);
+	public ResponseEntity<BaseResult> deletePlayer(@PathVariable Long id) {
+		return service.deletePlayer(id);
 	}
 	
 }

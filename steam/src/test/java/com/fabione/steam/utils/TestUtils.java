@@ -2,7 +2,7 @@ package com.fabione.steam.utils;
 
 import org.springframework.test.util.ReflectionTestUtils;
 
-import com.fabione.steam.service.EmailValidatorServiceImpl;
+import com.fabione.steam.service.business.EmailValidatorServiceImpl;
 
 public class TestUtils {
 	

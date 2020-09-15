@@ -3,7 +3,7 @@ package com.fabione.steam.business
 import org.springframework.boot.test.context.SpringBootTest
 
 import com.fabione.steam.exception.PlayerInfoException
-import com.fabione.steam.service.EmailValidatorServiceImpl
+import com.fabione.steam.service.business.EmailValidatorServiceImpl
 import com.fabione.steam.utils.TestUtilsForGroovy
 
 import spock.lang.Specification;
