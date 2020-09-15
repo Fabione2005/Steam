@@ -16,7 +16,7 @@ public class AgeValidatorServiceImpl implements AgeValidatorService{
 	private String ageMinMsg;
 	
 	@Override
-	public void AgeMinValidator(int age) {
+	public void validateAge(int age) {
 		
 		boolean isValid = age >= ageMin;
 

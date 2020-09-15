@@ -3,6 +3,7 @@ package com.fabione.steam.utils;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import com.fabione.steam.service.business.AgeValidatorServiceImpl;
+import com.fabione.steam.service.business.ChargeAmountValidatorServiceImpl;
 import com.fabione.steam.service.business.EmailValidatorServiceImpl;
 
 public class TestUtilsForGroovy {
@@ -17,5 +18,11 @@ public class TestUtilsForGroovy {
 		ReflectionTestUtils.setField(ageValidation, "ageMin", 18);
         ReflectionTestUtils.setField(ageValidation, "ageMinMsg", "La edad ingresada debe ser mayor a");
 	}
+	
+	public static void setChargeMoneyPropiertie(ChargeAmountValidatorServiceImpl chargeMoneyValidation) {
+		ReflectionTestUtils.setField(chargeMoneyValidation, "maxAmountChargeAllow", 1000);
+	}
+	
+	
 	
 }

@@ -53,7 +53,7 @@ public class PlayerServiceImpl implements PlayerService {
 		
 		emailValidator.validateEmail(user.getEmail());
 
-		ageValidator.AgeMinValidator(user.getAge());
+		ageValidator.validateAge(user.getAge());
 
 		user.setCreated(LocalDateTime.now());
 

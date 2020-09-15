@@ -26,7 +26,7 @@ class AgeValidationTestSpock extends Specification{
 		def age = 24
  
 	when:
-		ageValidation.AgeMinValidator(age)
+		ageValidation.validateAge(age)
  
 	then:
 		 noExceptionThrown()
@@ -38,7 +38,7 @@ class AgeValidationTestSpock extends Specification{
 		def age = 12
  
 	when:
-		ageValidation.AgeMinValidator(age)
+		ageValidation.validateAge(age)
  
 	then:
 		 thrown(PlayerInfoException)
