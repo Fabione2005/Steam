@@ -5,11 +5,13 @@ import org.springframework.http.ResponseEntity;
 import com.fabione.steam.model.Game;
 import com.fabione.steam.model.generic.BaseResult;
 import com.fabione.steam.model.generic.ResponseGameWrapper;
+import com.fabione.steam.repository.GameRepository;
 
 public interface GameService {
 
 	ResponseEntity<BaseResult> createGame(Game game);
 	ResponseEntity<BaseResult> deleteGame(Long idGame);
 	ResponseEntity<ResponseGameWrapper> retrieveAllGames();
+	void setRepository(GameRepository repository);
 	
 }

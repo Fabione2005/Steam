@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fabione.steam.exception.GameNotFoundException;
 import com.fabione.steam.exception.PlayerInfoException;
@@ -26,6 +27,7 @@ import com.fabione.steam.service.business.EmailValidatorService;
 import com.fabione.steam.service.business.SpentAmountValidatorService;
 
 @Service
+@Transactional
 public class PlayerServiceImpl implements PlayerService {
 
 	@Autowired
@@ -110,6 +112,8 @@ public class PlayerServiceImpl implements PlayerService {
 
 		wallet.setMoneyAmount(spentAmountValidator.spentAmountValidator(wallet.getMoneyAmount(), gameFound.getPrice()));
 		wallet.setLastTimeMoneySpent(LocalDateTime.now());
+		
+		playerFound.setWallet(wallet);
 
 		List<Game> tempList = new ArrayList<>(playerFound.getGames());
 		tempList.add(gameFound);

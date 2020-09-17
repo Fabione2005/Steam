@@ -44,7 +44,7 @@ public class Game {
 		super();
 	}
 	
-	public Game(String name, double weightOnGB, double price, Set<Player> users) {
+	public Game(String name, double weightOnGB, double price) {
 		super();
 		this.name = name;
 		this.weightOnGB = weightOnGB;

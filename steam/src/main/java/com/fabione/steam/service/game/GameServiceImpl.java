@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fabione.steam.exception.GameInfoException;
 import com.fabione.steam.exception.GameNotFoundException;
@@ -15,6 +16,7 @@ import com.fabione.steam.model.generic.ResponseGameWrapper;
 import com.fabione.steam.repository.GameRepository;
 
 @Service
+@Transactional
 public class GameServiceImpl implements GameService {
 
 	@Autowired
@@ -50,6 +52,11 @@ public class GameServiceImpl implements GameService {
 		responseBody.setGame(new HashSet<>(gameRepository.findAll()));
 
 		return ResponseEntity.status(HttpStatus.FOUND).body(responseBody);
+	}
+
+	@Override
+	public void setRepository(GameRepository repository) {
+		this.gameRepository = repository;
 	}
 
 }

@@ -2,6 +2,7 @@ package com.fabione.steam.utils;
 
 import org.springframework.test.util.ReflectionTestUtils;
 
+import com.fabione.steam.model.Game;
 import com.fabione.steam.service.business.AgeValidatorServiceImpl;
 import com.fabione.steam.service.business.ChargeAmountValidatorServiceImpl;
 import com.fabione.steam.service.business.EmailValidatorServiceImpl;
@@ -23,6 +24,17 @@ public class TestUtilsForGroovy {
 		ReflectionTestUtils.setField(chargeMoneyValidation, "maxAmountChargeAllow", 1000);
 	}
 	
+	public static Game getGame(Long id, String name, double weight, double price) 
+	{
+		Game game = new Game(name,weight,price);
+		game.setId(id);
+		
+		return game;
+	}
 	
+	public static Game getGame(String name, double weight, double price) 
+	{
+		return getGame(1L,name,weight,price);
+	}
 	
 }

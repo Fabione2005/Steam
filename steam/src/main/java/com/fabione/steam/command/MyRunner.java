@@ -1,16 +1,13 @@
 package com.fabione.steam.command;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import com.fabione.steam.repository.PlayerRepository;
 
 @Component
 public class MyRunner implements CommandLineRunner {
 
-    @Autowired
-    private PlayerRepository repository;
+//    @Autowired
+//    private PlayerRepository repository;
 
     @Override
     public void run(String... args) throws Exception {

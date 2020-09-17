@@ -10,6 +10,6 @@ import com.fabione.steam.model.Game;
 @Repository
 public interface GameRepository extends JpaRepository<Game, Long>
 {
-	Optional<Game> findByName(String email);
+	Optional<Game> findByName(String name);
 	
 }
