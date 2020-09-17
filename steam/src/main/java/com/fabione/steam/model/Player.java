@@ -59,14 +59,12 @@ public class Player {
 		super();
 	}
 
-	public Player(String name, String lastName, String email, int age, LocalDateTime created, Set<Game> games) {
+	public Player(String name, String lastName, String email, int age) {
 		super();
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
 		this.age = age;
-		this.created = created;
-		this.games = games;
 	}
 
 

@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import com.fabione.steam.model.Player;
 import com.fabione.steam.model.generic.BaseResult;
 import com.fabione.steam.model.generic.ResponsePlayerWrapper;
+import com.fabione.steam.repository.PlayerRepository;
 
 public interface PlayerService {
 
@@ -13,6 +14,7 @@ public interface PlayerService {
 	ResponseEntity<ResponsePlayerWrapper> retrieveAllPlayers();
 	ResponseEntity<BaseResult> buyGameToPlayer(Long playerId, Long gameId);
 	ResponseEntity<ResponsePlayerWrapper> retrievePlayersOlderThan(int age);
+	void setPlayerRepository(PlayerRepository repository);
 	
 	//Wallet Services
 	ResponseEntity<BaseResult> chargeMoney(Long playerId, double moneyAmount);

@@ -144,6 +144,11 @@ public class PlayerServiceImpl implements PlayerService {
 				.body(new BaseResult("User " + playerFound.getName() + " has successfully charged " + moneyAmount
 						+ " to the wallet, current amount in wallet is: " + wallet.getMoneyAmount()));
 	}
+
+	@Override
+	public void setPlayerRepository(PlayerRepository repository) {
+		this.repository = repository;
+	}
 	
 	private Wallet getWallet(Player playerFound) {
 		Wallet wallet = playerFound.getWallet() != null ? playerFound.getWallet() : new Wallet();
@@ -154,5 +159,6 @@ public class PlayerServiceImpl implements PlayerService {
 		Player playerFound = repository.findById(playerId).orElseThrow(PlayerNotFoundException::new);
 		return playerFound;
 	}
+
 
 }

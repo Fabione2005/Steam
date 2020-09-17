@@ -3,6 +3,8 @@ package com.fabione.steam.utils;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import com.fabione.steam.model.Game;
+import com.fabione.steam.model.Player;
+import com.fabione.steam.model.Wallet;
 import com.fabione.steam.service.business.AgeValidatorServiceImpl;
 import com.fabione.steam.service.business.ChargeAmountValidatorServiceImpl;
 import com.fabione.steam.service.business.EmailValidatorServiceImpl;
@@ -36,5 +38,16 @@ public class TestUtilsForGroovy {
 	{
 		return getGame(1L,name,weight,price);
 	}
+	
+	public static Player getPlayer(String name, String lastName, String email, int age)
+	{
+		return new Player(name,lastName,email,age);
+	}
+	
+	public static Wallet getWallet(double moneyAmount) 
+	{
+		return new Wallet(moneyAmount,null,null);
+	}
+	
 	
 }
