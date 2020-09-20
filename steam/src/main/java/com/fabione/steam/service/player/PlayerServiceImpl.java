@@ -2,7 +2,7 @@ package com.fabione.steam.service.player;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +69,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 		ResponsePlayerWrapper responseBody = new ResponsePlayerWrapper();
 
-		responseBody.setPlayer(new HashSet<>(repository.findAll()));
+		responseBody.setPlayer(new LinkedHashSet<>(repository.findAll()));
 
 		return ResponseEntity.status(HttpStatus.FOUND).body(responseBody);
 	}
@@ -89,7 +89,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 		ResponsePlayerWrapper responseBody = new ResponsePlayerWrapper();
 
-		responseBody.setPlayer(new HashSet<>(repository.getPlayerOrderThanProcedure(age)));
+		responseBody.setPlayer(new LinkedHashSet<>(repository.getPlayerOrderThanProcedure(age)));
 
 		return ResponseEntity.status(HttpStatus.FOUND).body(responseBody);
 	}
@@ -118,7 +118,7 @@ public class PlayerServiceImpl implements PlayerService {
 		List<Game> tempList = new ArrayList<>(playerFound.getGames());
 		tempList.add(gameFound);
 		
-		playerFound.setGames(new HashSet<>(tempList));
+		playerFound.setGames(new LinkedHashSet<>(tempList));
 
 		repository.save(playerFound);
 
